@@ -5,7 +5,7 @@ variable "nodegroups" {
       subnet_ids              = list(string),
       version                 = string,
       instance_types          = list(string),
-      spot                    = bool
+      spot                    = bool,
       tags                    = map(string),
       launch_template_id      = string,
       launch_template_version = number,
