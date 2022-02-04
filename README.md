@@ -53,7 +53,8 @@ map(object(
       launch_template_version = string,
       desired_size            = string,
       max_size                = string,
-      min_size                = string
+      min_size                = string,
+      taint                   = map(string)
     }
   ))
 ```
@@ -88,7 +89,8 @@ module "eks-nodegroups" {
       desired_size            = 1,
       max_size                = 0,
       min_size                = 5
-    }
+      taint                   = {}
+    },
     group2 = {
       node_role_arn           = "arn:aws:iam::111111222222:role/eks_nodes",
       subnet_ids              = ["subnet1", "subnet2", "subnet3"],
@@ -99,11 +101,16 @@ module "eks-nodegroups" {
         owner = "example@dummy.com"
         environment = "test"
       },
-      launch_template_id      = lt-0e06d290751193123,
+      launch_template_id      = "lt-0e06d290751193123",
       launch_template_version = 2,
       desired_size            = 1,
       max_size                = 0,
       min_size                = 5
+      taint                   = {
+        key = "key1"
+        value = "value1"
+        effect = "NO_SCHEDULE" ## Valid values: NO_SCHEDULE, NO_EXECUTE, PREFER_NO_SCHEDULE
+      }
     }
   }
 }
