@@ -11,7 +11,7 @@ variable "nodegroups" {
       launch_template_version = number,
       desired_size            = number,
       max_size                = number,
-      min_size                = number
+      min_size                = number,
       taints                  = set(any)
     }
   ))
