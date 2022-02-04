@@ -25,14 +25,14 @@ resource "aws_eks_node_group" "cluster_nodes" {
     ignore_changes = [scaling_config.0.desired_size]
   }
 
-  # dynamic "taint" {
-  #   for_each = var.taints
-  #   content {
-  #     key = taint.value["key"]
-  #     value = taint.value["value"]
-  #     effect = taint.value["effect"]
-  #   }
-  # }
+  dynamic "taint" {
+    for_each = each.value.taints
+    content {
+      key = taint.value["key"]
+      value = taint.value["value"]
+      effect = taint.value["effect"]
+    }
+  }
 }
 
 
