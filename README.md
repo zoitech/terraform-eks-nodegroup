@@ -87,8 +87,8 @@ module "eks-nodegroups" {
       launch_template_id      = lt-0e06d290751193123,
       launch_template_version = 2,
       desired_size            = 1,
-      max_size                = 0,
-      min_size                = 5
+      max_size                = 5,
+      min_size                = 0,
       taint                   = {}
     },
     group2 = {
@@ -104,8 +104,8 @@ module "eks-nodegroups" {
       launch_template_id      = "lt-0e06d290751193123",
       launch_template_version = 2,
       desired_size            = 1,
-      max_size                = 0,
-      min_size                = 5
+      max_size                = 5,
+      min_size                = 0,
       taint                   = {
         key = "key1"
         value = "value1"
