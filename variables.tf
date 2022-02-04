@@ -11,8 +11,8 @@ variable "nodegroups" {
       launch_template_version = number,
       desired_size            = number,
       max_size                = number,
-      min_size                = number,
-      taint                   = map(string)
+      min_size                = number
+      # taints                  = set(any)
     }
   ))
   description = "a map of objects containing the desired groups (each object name is the nodegroup name)"

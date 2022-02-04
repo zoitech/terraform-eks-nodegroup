@@ -9,7 +9,6 @@ resource "aws_eks_node_group" "cluster_nodes" {
   instance_types  = each.value.instance_types
   capacity_type   = each.value.spot ? "SPOT" : "ON_DEMAND"
   tags            = each.value.tags
-  taint           = each.value.taint
 
   launch_template {
     id      = each.value.launch_template_id
@@ -25,6 +24,15 @@ resource "aws_eks_node_group" "cluster_nodes" {
   lifecycle {
     ignore_changes = [scaling_config.0.desired_size]
   }
+
+  # dynamic "taint" {
+  #   for_each = var.taints
+  #   content {
+  #     key = taint.value["key"]
+  #     value = taint.value["value"]
+  #     effect = taint.value["effect"]
+  #   }
+  # }
 }
 
 

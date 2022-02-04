@@ -89,7 +89,7 @@ module "eks-nodegroups" {
       desired_size            = 1,
       max_size                = 5,
       min_size                = 0,
-      taint                   = {}
+      taint                   = []
     },
     group2 = {
       node_role_arn           = "arn:aws:iam::111111222222:role/eks_nodes",
@@ -106,11 +106,11 @@ module "eks-nodegroups" {
       desired_size            = 1,
       max_size                = 5,
       min_size                = 0,
-      taint                   = {
+      taints                  = [{
         key = "key1"
         value = "value1"
         effect = "NO_SCHEDULE" ## Valid values: NO_SCHEDULE, NO_EXECUTE, PREFER_NO_SCHEDULE
-      }
+      }]
     }
   }
 }
