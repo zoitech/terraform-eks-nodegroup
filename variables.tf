@@ -12,7 +12,7 @@ variable "nodegroups" {
       desired_size            = number,
       max_size                = number,
       min_size                = number,
-      taints                  = set(any)
+      taints                  = list(object)
     }
   ))
   description = "a map of objects containing the desired groups (each object name is the nodegroup name)"
